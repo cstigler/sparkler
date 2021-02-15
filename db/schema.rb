@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20160520173336) do
 
-  create_table "feeds", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "feeds", id: :serial, force: :cascade do |t|
     t.string "title", null: false
     t.string "name", null: false
     t.string "url", null: false
@@ -24,27 +27,27 @@ ActiveRecord::Schema.define(version: 20160520173336) do
     t.boolean "inactive", default: false, null: false
   end
 
-  create_table "options", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "options", id: :serial, force: :cascade do |t|
     t.integer "property_id", null: false
     t.string "name", null: false
     t.index ["property_id", "name"], name: "index_options_on_property_id_and_name", unique: true
   end
 
-  create_table "properties", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "properties", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.index ["name"], name: "index_properties_on_name", unique: true
   end
 
-  create_table "statistics", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "statistics", id: :serial, force: :cascade do |t|
     t.integer "feed_id", null: false
-    t.date "date", null: false
     t.integer "property_id", null: false
     t.integer "option_id", null: false
     t.integer "counter", default: 0, null: false
+    t.date "date", null: false
     t.index ["feed_id", "date", "property_id", "option_id"], name: "stats_index", unique: true
   end
 
-  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "password_digest"
   end
 
