@@ -1,10 +1,10 @@
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   host: 127.0.0.1
   username: root
   password: 
-  socket: /tmp/mysql.sock
+  socket: /tmp/postgres.sock
 
 development:
   <<: *default

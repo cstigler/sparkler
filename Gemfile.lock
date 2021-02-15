@@ -79,6 +79,8 @@ GEM
     open_uri_redirections (0.2.1)
     pg (0.18.4)
     public_suffix (2.0.5)
+    puma (5.2.1)
+      nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.0.6)
     rack-test (1.1.0)
@@ -188,6 +190,7 @@ DEPENDENCIES
   nokogiri (~> 1.11.1)
   open_uri_redirections
   pg (~> 0.18.4)
+  puma
   rails (~> 5.1.6, >= 5.1.6.1)
   rails-controller-testing
   rspec (~> 3.6)
