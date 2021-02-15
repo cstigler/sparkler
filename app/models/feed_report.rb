@@ -35,7 +35,7 @@ class FeedReport
     @counts = {}
 
     grouped_statistics = @feed.statistics
-      .select("DATE_FORMAT(date, '%Y-%m') AS ym, property_id, option_id, SUM(counter) AS total_for_month")
+      .select("to_char(date, 'yyyy-mm') AS ym, property_id, option_id, SUM(counter) AS total_for_month")
       .group("ym, property_id, option_id")
 
     grouped_statistics.each do |stat|
